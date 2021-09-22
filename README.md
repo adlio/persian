@@ -1,2 +1,1 @@
-# finglishify
-Transliteration from Persian / Farsi / Dari to Finglish
+# Persian Language Tools for Go

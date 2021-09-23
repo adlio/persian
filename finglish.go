@@ -8,6 +8,7 @@ import (
 type Consonant rune
 
 const (
+	// What Unicode character is this: https://www.babelstone.co.uk/Unicode/whatisit.html
 	// Romanization table information: https://en.wikipedia.org/wiki/Romanization_of_Persian#Comparison_table
 	Aleph     Consonant = 0x0627
 	Bet       Consonant = 0x0628 // B as in Bob
@@ -41,6 +42,8 @@ type Diacritic rune
 const (
 	Shadda Diacritic = 0x0651 // Doubles the prior consonant
 )
+
+/*
 var lookup = map[string][]string{
 	"تَ": {"a", "a"},
 	"تِ": {"e", "e"},
@@ -83,6 +86,7 @@ var lookup = map[string][]string{
 	"ی":  {"y", "i"},
 	"ي":  {"y", "i"},
 }
+*/
 
 func ToFinglish(input string) string {
 	var b strings.Builder
@@ -95,15 +99,11 @@ func ToFinglish(input string) string {
 			b.WriteString(" ")
 		}
 
-		chars := bufio.NewScanner(strings.NewReader(words.Text()))
-		chars.Split(bufio.ScanRunes)
-		charCount := 0
-		for chars.Scan() {
-			char := chars.Text()
-			if resultChars, found := lookup[char]; found {
-				b.WriteString(resultChars[0])
-			}
-			charCount++
+		lex := lexer{word: words.Text()}
+		str := lex.nextRomanized()
+		for str != "" {
+			b.WriteString(str)
+			str = lex.nextRomanized()
 		}
 
 		wordCount++

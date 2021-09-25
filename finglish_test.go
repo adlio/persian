@@ -14,9 +14,10 @@ func TestToFinglishBlank(t *testing.T) {
 
 func TestNames(t *testing.T) {
 	testCases := map[string]string{
-		"عبّاس": "abbas",
-		"گل":    "gol",
-		"حمید":  "hamid",
+		"عبّاس":   "abbas",
+		"گل":      "gol",
+		"حمید":    "hamid",
+		"عبدالله": "Abdul",
 	}
 	for src, expected := range testCases {
 		actual := ToFinglish(src)

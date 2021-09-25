@@ -26,15 +26,15 @@ const (
 	PeSemitic Consonant = 0x0641 // F as in Fred
 	PePersian Consonant = 0x067E // P as in Pet
 	Qoph      Consonant = 0x0642 // French R
-	// Kaph   rune = 0x0643 // Not listed here: https://en.wikipedia.org/wiki/Romanization_of_Persian#Fingilish
-	Kaph   Consonant = 0x06A9 // C as in Card
-	Gaf    Consonant = 0x06AF // G as in Go
-	Lamedh Consonant = 0x0644 // L as in Lamp
-	Mem    Consonant = 0x0645 // M as in Michael
-	Nun    Consonant = 0x0646 // N as in Name
-	He     Consonant = 0x0647 // H as in Hot
-	Waw    Consonant = 0x0648 // V as in Vision
-	Yodh   Consonant = 0x06CC // Y as in Yale
+	Kaf       rune      = 0x0643 // Not listed here: https://en.wikipedia.org/wiki/Romanization_of_Persian#Fingilish
+	Keheh     Consonant = 0x06A9 // C as in Card { kaf mashkula }
+	Gaf       Consonant = 0x06AF // G as in Go
+	Lamedh    Consonant = 0x0644 // L as in Lamp
+	Mem       Consonant = 0x0645 // M as in Michael
+	Nun       Consonant = 0x0646 // N as in Name
+	He        Consonant = 0x0647 // H as in Hot
+	Waw       Consonant = 0x0648 // V as in Vision
+	Yodh      Consonant = 0x06CC // Y as in Yale
 )
 
 type Diacritic rune

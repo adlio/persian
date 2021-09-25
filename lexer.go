@@ -123,7 +123,7 @@ func IsConsonant(r rune) bool {
 		fallthrough
 	case Qoph:
 		fallthrough
-	case Kaph:
+	case Keheh:
 		fallthrough
 	case Gaf:
 		fallthrough

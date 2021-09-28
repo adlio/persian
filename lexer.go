@@ -79,6 +79,8 @@ func (l *lexer) nextRomanized() string {
 		romanized = "s"
 	case Seen:
 		romanized = "s"
+	case Sheen:
+		romanized = "sh"
 	case Yeh:
 		romanized = "i"
 	case Zain:

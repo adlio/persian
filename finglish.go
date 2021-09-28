@@ -39,7 +39,7 @@ const (
 	He        Consonant = 0x0647 // H as in Hot
 	Waw       Consonant = 0x0648 // V as in Vision
 	Tcheh     Consonant = 0x0686 // Ch
-	Yeh      Consonant = 0x06CC // Farsi Yeh, Y as in Yale
+	Yeh       Consonant = 0x06CC // Farsi Yeh, Y as in Yale
 )
 
 type Diacritic rune

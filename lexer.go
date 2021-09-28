@@ -10,6 +10,11 @@ type lexer struct {
 	width int
 }
 
+func (l *lexer) prior() (r rune) {
+	l.backup()
+	return l.next()
+}
+
 // next consumes the next UTF-8 rune in the word
 func (l *lexer) next() (r rune) {
 	if l.pos >= len(l.word) {
@@ -52,21 +57,36 @@ func (l *lexer) nextRomanized() string {
 		romanized = "d"
 	case Gaf:
 		romanized = "g"
-	case Heth:
+	case Heth, He:
 		romanized = "h"
+	case Jeem:
+		romanized = "j"
+	case Keheh:
+		romanized = "k"
+	case Tcheh:
+		romanized = "ch"
 	case Lamedh:
 		romanized = "l"
 	case Mem:
 		romanized = "m"
+	case Nun:
+		romanized = "n"
+	case Qaf:
+		romanized = "q"
+	case Reh:
+		romanized = "r"
 	case Sad:
 		romanized = "s"
 	case Seen:
 		romanized = "s"
-	case Yodh:
+	case Yeh:
 		romanized = "i"
+	case Zain:
+		romanized = "z"
 	}
 
 	if Diacritic(p) == Shadda {
+		// The Shadda diacritic doubles the prior consonant
 		l.next() // consume the input
 		romanized = romanized + romanized
 	}
@@ -74,13 +94,18 @@ func (l *lexer) nextRomanized() string {
 	switch {
 	case Consonant(n) == Gaf && Consonant(p) == Lamedh:
 		romanized = romanized + "o"
+	case Consonant(n) == Aleph && Consonant(p) == Lamedh:
+		romanized = "u"
+	case Consonant(n) == Lamedh && Consonant(p) == He:
+		romanized = romanized + "a"
 	case Consonant(n) == Heth && Consonant(p) == Mem:
 		romanized = romanized + "a"
-	case Consonant(p) == Yodh:
+	case Consonant(p) == Yeh:
 		// nothing
-	case IsConsonant(n) && IsConsonant(p):
-		romanized = "n=" + string(n) + "p=" + string(p)
-		// romanized = romanized + "a"
+	case Consonant(n) == Seen && Consonant(p) == Keheh:
+		romanized = romanized + "a"
+	case Consonant(n) == Nun && Consonant(p) == He:
+		romanized = romanized + "e"
 	}
 
 	if romanized == "" {
@@ -136,7 +161,7 @@ func IsConsonant(r rune) bool {
 		fallthrough
 	case Waw:
 		fallthrough
-	case Yodh:
+	case Yeh:
 		return true
 	}
 	return false

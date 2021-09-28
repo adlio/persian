@@ -17,7 +17,12 @@ func TestNames(t *testing.T) {
 		"عبّاس":   "abbas",
 		"گل":      "gol",
 		"حمید":    "hamid",
-		"عبدالله": "Abdul",
+		"عبدالله": "abdullah",
+		"سکینه":   "sakineh",
+		"سارا":    "sara",
+		"سمیرا":   "samira",
+		"ساناز":   "sanaz",
+		"صدیقی":   "siddiqi",
 	}
 	for src, expected := range testCases {
 		actual := ToFinglish(src)

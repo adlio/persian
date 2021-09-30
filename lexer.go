@@ -47,7 +47,7 @@ func (l *lexer) nextRomanized() string {
 
 	var romanized string
 	switch Consonant(n) {
-	case Aleph:
+	case Aleph, AlephMadda:
 		romanized = "a"
 	case Ayin:
 		romanized = "a"
@@ -55,7 +55,7 @@ func (l *lexer) nextRomanized() string {
 		romanized = "b"
 	case Dalet:
 		romanized = "d"
-	case Gaf:
+	case Gaf, KafRing, Ghain:
 		romanized = "g"
 	case Heth, He:
 		romanized = "h"
@@ -81,7 +81,7 @@ func (l *lexer) nextRomanized() string {
 		romanized = "s"
 	case Sheen:
 		romanized = "sh"
-	case Yeh:
+	case YehSemitic, YehPersian:
 		romanized = "i"
 	case Zain:
 		romanized = "z"
@@ -102,7 +102,7 @@ func (l *lexer) nextRomanized() string {
 		romanized = romanized + "a"
 	case Consonant(n) == Heth && Consonant(p) == Mem:
 		romanized = romanized + "a"
-	case Consonant(p) == Yeh:
+	case Consonant(p) == YehSemitic || Consonant(p) == YehPersian:
 		// nothing
 	case Consonant(n) == Seen && Consonant(p) == Keheh:
 		romanized = romanized + "a"
@@ -116,4 +116,3 @@ func (l *lexer) nextRomanized() string {
 
 	return romanized
 }
-

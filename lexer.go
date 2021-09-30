@@ -119,51 +119,11 @@ func (l *lexer) nextRomanized() string {
 
 func IsConsonant(r rune) bool {
 	switch Consonant(r) {
-	case Aleph:
-	case Bet:
+	case Aleph, Bet, Taw, Heth, Dalet, Seen, Sheen, Sad, Dad, Teth, Za:
+		return true
+	case Ayin, Ghayn, PeSemitic, PePersian, Qoph:
 		fallthrough
-	case Taw:
-		fallthrough
-	case Heth:
-		fallthrough
-	case Dalet:
-		fallthrough
-	case Seen:
-		fallthrough
-	case Sheen:
-		fallthrough
-	case Sad:
-		fallthrough
-	case Dad:
-		fallthrough
-	case Teth:
-		fallthrough
-	case Za:
-		fallthrough
-	case Ayin:
-		fallthrough
-	case Ghayn:
-		fallthrough
-	case PeSemitic:
-		fallthrough
-	case PePersian:
-		fallthrough
-	case Qoph:
-		fallthrough
-	case Keheh:
-		fallthrough
-	case Gaf:
-		fallthrough
-	case Lamedh:
-	case Mem:
-		fallthrough
-	case Nun:
-		fallthrough
-	case He:
-		fallthrough
-	case Waw:
-		fallthrough
-	case Yeh:
+	case Keheh, Gaf, Lamedh, Mem, Nun, He, Waw, Yeh:
 		return true
 	}
 	return false

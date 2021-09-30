@@ -6,6 +6,8 @@ import (
 )
 
 
+// ToFinglish performs transliteration of the provided string from
+// Persian to English
 func ToFinglish(input string) string {
 	var b strings.Builder
 	words := bufio.NewScanner(strings.NewReader(input))

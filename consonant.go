@@ -39,3 +39,16 @@ const (
 	Tcheh     Consonant = 0x0686 // Ch
 	Yeh       Consonant = 0x06CC // Farsi Yeh, Y as in Yale
 )
+
+// IsConsonant returns true if the provided rune is a Persian consonant
+func IsConsonant(r rune) bool {
+	switch Consonant(r) {
+	case Aleph, Bet, Taw, Heth, Dalet, Seen, Sheen, Sad, Dad, Teth, Za:
+		return true
+	case Ayin, Ghayn, PeSemitic, PePersian, Qoph:
+		fallthrough
+	case Keheh, Gaf, Lamedh, Mem, Nun, He, Waw, Yeh:
+		return true
+	}
+	return false
+}

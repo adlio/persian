@@ -12,3 +12,14 @@ const (
 	Shadda Diacritic = 0x0651 // Doubles the prior consonant
 	Sukun  Diacritic = 0x0652 // Indicates the absence of a vowel
 )
+
+// IsDiacritic returns true if the provided rune is a diacritic in
+// Persian
+func IsDiacritic(r rune) bool {
+	switch Diacritic(r) {
+	case Fatha, Damma, Kasra, Shadda, Sukun:
+		return true
+	default:
+		return false
+	}
+}

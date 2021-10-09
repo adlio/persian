@@ -13,23 +13,15 @@ func TestToFinglishBlank(t *testing.T) {
 }
 
 func TestNames(t *testing.T) {
-	testCases := map[string]string{
-		"عبّاس":   "abbas",
-		"گل":      "gol",
-		"حمید":    "hamid",
-		"عبدالله": "abdullah",
-		"سکینه":   "sakineh",
-		"سارا":    "sara",
-		"سمیرا":   "samira",
-		"ساناز":   "sanaz",
-		"صدیقی":   "siddiqi",
-		"شهرزاد":  "shahrazad",
-		"ګل آغا شيرزی": "gul agha sherzai",
-	}
-	for src, expected := range testCases {
-		actual := ToFinglish(src)
-		if actual != expected {
-			t.Errorf("Expect '%s' => '%s'. Got '%s'.", src, expected, actual)
-		}
-	}
+	assertMatch(t, "عبّاس", "abbas")
+	assertMatch(t, "گل", "gol")
+	assertMatch(t, "حمید", "hamid")
+	assertMatch(t, "عبدالله", "abdullah")
+	assertMatch(t, "سکینه", "sakineh")
+	assertMatch(t, "سارا", "sara")
+	assertMatch(t, "سمیرا", "samira")
+	assertMatch(t, "ساناز", "sanaz")
+	assertMatch(t, "صدیقی", "siddiqi")
+	assertMatch(t, "شهرزاد", "shahrazad")
+	assertMatch(t, "ګل آغا شيرزی", "gul agha sherzai")
 }

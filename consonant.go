@@ -1,14 +1,33 @@
 package persian
 
-// Consonant defines a Persian-language consonant character
-type Consonant rune
+func Consonant(roman string) RuneProcessor {
+	return func(l *lexer) string {
+		return string(l.next())
+	}
+}
 
+var (
+	Aleph          = Consonant("a")
+	AlephWithMadda = Consonant("a")
+)
+
+type RuneProcessor func(l *lexer) string
+
+func DefaultProcessor(l *lexer) string {
+	// By default we consume the next character
+	return string(l.next())
+}
+
+var procs = map[rune]RuneProcessor{
+	0x0622: AlephWithMadda,
+	0x0627: Aleph,
+}
+
+/*
 // Persian alphabet consonants
 const (
 	// What Unicode character is this: https://www.babelstone.co.uk/Unicode/whatisit.html
 	// Romanization table information: https://en.wikipedia.org/wiki/Romanization_of_Persian#Comparison_table
-	AlephMadda Consonant = 0x0622 // A
-	Aleph      Consonant = 0x0627 // A
 	Bet        Consonant = 0x0628 // B as in Bob
 	Taw        Consonant = 0x0629 // No pronunciation?
 	Jeem       Consonant = 0x062C // J as in Jam
@@ -55,3 +74,4 @@ func IsConsonant(r rune) bool {
 	}
 	return false
 }
+*/

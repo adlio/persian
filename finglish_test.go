@@ -13,6 +13,7 @@ func TestToFinglishBlank(t *testing.T) {
 }
 
 func TestNames(t *testing.T) {
+
 	assertMatch(t, "عبّاس", "abbas")
 	assertMatch(t, "گل", "gol")
 	assertMatch(t, "حمید", "hamid")

@@ -1,34 +1,10 @@
 package persian
 
-import (
-	"bufio"
-	"strings"
-)
-
-
 // ToFinglish performs transliteration of the provided string from
 // Persian to English
 func ToFinglish(input string) string {
-	var b strings.Builder
-	words := bufio.NewScanner(strings.NewReader(input))
-	words.Split(bufio.ScanWords)
-	wordCount := 0
-	for words.Scan() {
-		if wordCount > 0 {
-			// Add leading space before all but the first word
-			b.WriteString(" ")
-		}
-
-		lex := lexer{word: words.Text()}
-		str := lex.nextRomanized()
-		for str != "" {
-			b.WriteString(str)
-			str = lex.nextRomanized()
-		}
-
-		wordCount++
-	}
-	return b.String()
+	lex := lexer{content: input}
+	return lex.run()
 }
 
 /*
